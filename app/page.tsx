@@ -42,7 +42,7 @@ function CustomCursor() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-8 h-8 border border-cyan-500/50 rounded-full pointer-events-none z-[999999] flex items-center justify-center mix-blend-screen hidden md:flex"
+      className="fixed top-0 left-0 w-8 h-8 border border-cyan-500/50 rounded-full pointer-events-none z-999999 hidden md:flex items-center justify-center mix-blend-screen"
       animate={{ x: mousePosition.x - 16, y: mousePosition.y - 16 }}
       transition={{ type: "tween", ease: "backOut", duration: 0.1 }}
     >
@@ -223,7 +223,7 @@ export default function Home() {
       {/* --- SOUND TOGGLE --- */}
       <button 
         onClick={() => { setSoundEnabled(!soundEnabled); playSound("click", !soundEnabled); }}
-        className="fixed top-6 right-6 z-[9999] text-gray-400 hover:text-cyan-400 transition-colors p-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full cursor-none pointer-events-auto"
+        className="fixed top-6 right-6 z-9999 text-gray-400 hover:text-cyan-400 transition-colors p-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full cursor-none pointer-events-auto"
       >
         {soundEnabled ? <FaVolumeUp size={18} /> : <FaVolumeMute size={18} />}
       </button>
@@ -236,7 +236,7 @@ export default function Home() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, scale: 1.05 }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
-            className="fixed inset-0 z-[999999] bg-[#030712] flex flex-col items-center justify-center"
+            className="fixed inset-0 z-999999 bg-[#030712] flex flex-col items-center justify-center"
           >
             <motion.div
               initial={{ opacity: 0 }}
@@ -246,7 +246,7 @@ export default function Home() {
             >
               <p>ESTABLISHING SECURE CONNECTION...</p>
               <p className="mt-2 text-indigo-400">DECRYPTING PROTOCOLS</p>
-              <div className="w-48 h-[1px] bg-cyan-500/50 mx-auto mt-6 relative overflow-hidden">
+              <div className="w-48 h-px bg-cyan-500/50 mx-auto mt-6 relative overflow-hidden">
                  <motion.div 
                     initial={{ x: "-100%" }} animate={{ x: "100%" }} transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
                     className="w-1/2 h-full bg-cyan-400"
@@ -265,7 +265,7 @@ export default function Home() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "100%", opacity: 0 }}
             transition={{ type: "spring", damping: 20, stiffness: 200 }}
-            className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[95%] md:w-[600px] h-[350px] bg-[#030712]/90 backdrop-blur-xl border border-cyan-500/30 rounded-lg shadow-[0_0_30px_rgba(34,211,238,0.1)] z-[99999] flex flex-col overflow-hidden"
+            className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[95%] md:w-150 h-87.5 bg-[#030712]/90 backdrop-blur-xl border border-cyan-500/30 rounded-lg shadow-[0_0_30px_rgba(34,211,238,0.1)] z-99999 flex flex-col overflow-hidden"
           >
             <div className="flex items-center justify-between px-4 py-2 border-b border-cyan-500/20 bg-cyan-900/20">
               <span className="text-cyan-400 font-mono text-xs tracking-widest flex items-center gap-2"><FaTerminal /> ROOT TERMINAL</span>
@@ -292,7 +292,7 @@ export default function Home() {
         {activeProject && (
           <motion.div
             initial={{ opacity: 0, backdropFilter: "blur(0px)" }} animate={{ opacity: 1, backdropFilter: "blur(20px)" }} exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/60 p-6 pointer-events-auto"
+            className="fixed inset-0 z-99999 flex items-center justify-center bg-black/60 p-6 pointer-events-auto"
             onClick={() => { setActiveProject(null); playSound("click", soundEnabled); }}
           >
             <motion.div
@@ -337,10 +337,10 @@ export default function Home() {
 
       {/* --- HERO SECTION --- */}
       <section className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 pointer-events-none">
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }} className="absolute w-[600px] h-[600px] bg-cyan-600/10 blur-[150px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }} className="absolute w-150 h-150 bg-cyan-600/10 blur-[150px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 2.2 }} className="text-center z-10">
           <p className="text-cyan-400 font-mono tracking-[0.3em] uppercase text-xs md:text-sm mb-6 flex items-center justify-center gap-3">
-            <span className="w-8 h-[1px] bg-cyan-400/50 block"></span> System Online <span className="w-8 h-[1px] bg-cyan-400/50 block"></span>
+            <span className="w-8 h-px bg-cyan-400/50 block"></span> System Online <span className="w-8 h-px bg-cyan-400/50 block"></span>
           </p>
           <h1 className="text-7xl md:text-9xl font-black tracking-tighter mb-4 text-white drop-shadow-2xl">HARSH<br/>PARIKH</h1>
           <h2 className="text-xl md:text-3xl font-light text-gray-400 mb-8 max-w-3xl mx-auto border-t border-b border-gray-800 py-4">
@@ -378,7 +378,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[200px]">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="md:col-span-1 md:row-span-2 relative rounded-2xl bg-white/5 border border-white/10 overflow-hidden">
             <Image src="/profile.jpg" alt="Harsh Parikh" fill className="object-cover object-center" priority />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/40 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-[#030712] via-[#030712]/40 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6">
               <h3 className="text-2xl font-bold text-white">Harsh M. Parikh</h3>
               <p className="text-cyan-400 font-mono text-sm">Targeting Global Architecture</p>
@@ -409,14 +409,14 @@ export default function Home() {
         <h3 className="text-5xl font-black mb-24 text-center text-cyan-500"><DecryptText text="THE ARCHITECTURE" /></h3>
         <div className="relative border-l border-cyan-500/30 pl-8 md:pl-16 space-y-20">
           <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} className="relative">
-            <div className="absolute -left-[41px] md:-left-[73px] top-1 w-5 h-5 bg-[#030712] border-2 border-cyan-400 rounded-full shadow-[0_0_15px_#22d3ee]" />
+            <div className="absolute -left-10.25 md:-left-18.25 top-1 w-5 h-5 bg-[#030712] border-2 border-cyan-400 rounded-full shadow-[0_0_15px_#22d3ee]" />
             <h4 className="text-3xl font-bold">SEO Engineer Intern</h4>
             <p className="text-indigo-400 font-mono mt-1 mb-4">Emblus | Dec 2025 - Apr 2026 | On-Site, Ahmedabad</p>
             <p className="text-gray-400 leading-relaxed max-w-2xl">Engineered &quot;Smart-Spider,&quot; a custom AI-powered crawler. Automated technical analysis to detect crawl errors, drastically reducing manual reporting time and optimizing site architecture.</p>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} className="relative">
-            <div className="absolute -left-[41px] md:-left-[73px] top-1 w-5 h-5 bg-[#030712] border-2 border-cyan-400 rounded-full shadow-[0_0_15px_#22d3ee]" />
+            <div className="absolute -left-10.25 md:-left-18.25 top-1 w-5 h-5 bg-[#030712] border-2 border-cyan-400 rounded-full shadow-[0_0_15px_#22d3ee]" />
             <h4 className="text-3xl font-bold">Cybersecurity Intern</h4>
             <p className="text-indigo-400 font-mono mt-1 mb-4">Vault-Tec Security | Sep 2025 - Oct 2025 | Remote</p>
             <p className="text-gray-400 leading-relaxed max-w-2xl">Executed vulnerability analysis on test systems. Designed strict Role-Based Access Control (RBAC) models and implemented reCAPTCHA protocols to shield applications from automated attacks.</p>
@@ -478,7 +478,7 @@ export default function Home() {
                 <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 blur-[50px] rounded-full group-hover:bg-cyan-400/10 transition-all duration-500 pointer-events-none" />
                 <h4 className="text-2xl font-bold mb-1 relative z-10 pointer-events-none">{project.title}</h4>
                 <p className="text-cyan-400 font-mono text-sm mb-6 relative z-10 pointer-events-none">{project.subtitle}</p>
-                <p className="text-gray-400 mb-8 leading-relaxed relative z-10 flex-grow pointer-events-none">{project.description}</p>
+                <p className="text-gray-400 mb-8 leading-relaxed relative z-10 grow pointer-events-none">{project.description}</p>
               </motion.div>
             </Magnetic>
           ))}
