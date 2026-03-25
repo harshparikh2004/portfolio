@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+
+
 // You might have different fonts imported here, leave your font imports as they are, 
 // just update the metadata object below:
 

@@ -6,6 +6,7 @@ import { Float, Stars } from "@react-three/drei";
 import { useRef, useState, useEffect } from "react";
 import * as THREE from "three";
 import { motion, AnimatePresence, useScroll, useInView } from "framer-motion";
+import { Analytics } from "@vercel/analytics/next"
 
 // Icons
 import { SiPython, SiReact, SiJavascript, SiNodedotjs, SiMongodb, SiFirebase, SiStreamlit } from "react-icons/si";
